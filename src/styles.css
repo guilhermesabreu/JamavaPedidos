@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';   
+
+.bg-light {
+    background-color:rgb(208, 178, 218) !important;
+    margin:0;
+    position: fixed; 
+    z-index: 2; 
+    width:100%
+}
+
+.carousel-control-prev-icon{
+    background-image: url('https://apufpel.com.br/assets/img/seta_prim.png');
+}
+
+.carousel-control-prev{
+    cursor: pointer;
+}
+
+.carousel-control-next-icon{
+   background-image: url('https://apufpel.com.br/assets/img/seta_ult.png');
+}
+
+.carousel-control-next{
+    cursor: pointer;
+}
+
+.carousel-indicators li {
+   background-color: rgb(6, 61, 58);
+}
+.carousel-indicators{
+    z-index: 1; 
+}
