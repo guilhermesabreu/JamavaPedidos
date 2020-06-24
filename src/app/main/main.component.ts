@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Mercadoria } from '../model/mercadoria';
+import { Mercadoria } from '../_model/mercadoria';
 
 
 @Component({
