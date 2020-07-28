@@ -16,6 +16,7 @@
 }
 
 .carousel-control-prev{
+    left: 0;
     cursor: pointer;
 }
 
@@ -23,7 +24,12 @@
    background-image: url('https://apufpel.com.br/assets/img/seta_ult.png');
 }
 
+.carousel-control {
+    color: red;
+  }
+
 .carousel-control-next{
+    right: 0;
     cursor: pointer;
 }
 

@@ -10,30 +10,304 @@
 
 <section class="content-site" id="gan">
   <div class="container">
-    <div class="row">
-      <div class='product--yellow'>
-        <div class='product_inner'>
-          <carousel [interval]="0" >
-            <slide *ngFor="let produto of produtos; let index=index">
-              <div class="text-center py-5 bg-dark text-white" style="background-color: rgb(239, 231, 241) !important;">
-                <img [src]="produto.img" class="img-responsive center-block" alt="third slide" style="width: 40%;">
-                <div class="lead">
-                  <i style="font-size: x-small; color: black;">imagem ilustrativa</i>
-                  <h3 [style]="produto.color">{{produto.nome}}</h3>
-                  <br>
-                  <h4 style="color:rgb(136, 37, 2)">R${{produto.valor}} cada unidade</h4>
-                  <label style="color:rgb(136, 37, 2)">Quantidade</label>
-                  <input [(ngModel)]="produto.quantidade" type="number" class="quantidade" min="0"/></div>
-                  <br>
-                  <i class='fa fa-shopping-cart' style="font-size: 110%; color: black; margin-right: 5px;"></i>
-                  <input (click)="preencherCarrinho()" type="button" class="btn btn-success" style="margin-right: 10px;" value="colocar no Carrinho"/>
-              </div>
-            </slide>
-            </carousel>
-            
+    <tabset [justified]="true">
+      <tab heading="Iogurte Integral" id="tab1">
+        <div class="row">
+          <div class='product--yellow'>
+            <div class='product_inner'>
+              <carousel [interval]="0" >
+                <slide *ngFor="let iogurte of iogurtes; let index=index">
+                  <div class="text-center py-5 bg-dark text-white" style="background-color: rgb(239, 231, 241) !important;">
+                    <img [src]="iogurte.img" class="img-responsive center-block" alt="third slide" style="width: 100%;">
+                    <div class="lead">
+                      <i style="font-size: x-small; color: black;">imagem ilustrativa</i>
+                      <h3 [style]="iogurte.color">{{iogurte.nome}}</h3>
+                      <h4 style="color: rgb(48 16 60);">R${{iogurte.valor}} cada unidade</h4>
+                      <div *ngIf="iogurte.id == 0" class="text-center">
+                        <h6 style="color:rgb(77, 1, 103);">Selecione o sabor</h6>
+                        <select style="text-align: center; width: 50%;margin-left: auto;
+                        margin-right: auto;" [(ngModel)]="garrafa400" class="form-control" id="garrafa400">
+                        <option value="0">Morango</option>
+                        <option value="1">Amêixa</option>
+                        <option value="2">Côco</option>
+                        <option value="3">Frutas Vermelhas</option>
+                        <option value="4">Salada de Frutas</option>
+                        </select>
+                        <p style="color:rgb(77, 1, 103);font-size: medium;">e a Quantidade</p>
+                        <input [(ngModel)]="quantidadegarrafa400" type="number" class="quantidade" min="0"/>
+                      </div>
+                      <div *ngIf="iogurte.id == 1">
+                        <p style="color:rgb(77, 1, 103);font-size: medium;">Quantidade</p>
+                        <input [(ngModel)]="quantidadeCopo170" type="number" class="quantidade" min="0"/>
+                      </div>
+                      <div *ngIf="iogurte.id == 2">
+                        <h6 style="color:rgb(77, 1, 103);">Selecione o sabor</h6>
+                        <select style="text-align: center; width: 50%;margin-left: auto;
+                        margin-right: auto;" [(ngModel)]="garrafa170" class="form-control" id="garrafa400">
+                        <option value="0">Ameixa Côco e Cereais</option>
+                        <option value="1">Frutas Vermelhas</option>
+                        <option value="2">Flocos e Avêia</option>
+                        <option value="3">Salada de Frutas</option>
+                        <option value="4">Amêixa</option>
+                        <option value="5">Côco</option>
+                        <option value="6">Morango</option>
+                        </select>
+                        <p style="color:rgb(77, 1, 103);font-size: medium;">e a Quantidade</p>
+                        <input [(ngModel)]="quantidadegarrafa170" type="number" class="quantidade" min="0"/>
+                      </div>
+                      <div *ngIf="iogurte.id == 3">
+                        <h6 style="color:rgb(77, 1, 103);">Selecione o sabor</h6>
+                        <select style="text-align: center; width: 50%;margin-left: auto;
+                        margin-right: auto;" [(ngModel)]="garrafa850" class="form-control" id="garrafa400">
+                        <option value="0">Salada de Frutas</option>
+                        <option value="1">Amêixa</option>
+                        <option value="2">Côco</option>
+                        <option value="3">Frutas Vermelhas</option>
+                        <option value="4">Morango</option>
+                        <option value="5">Natural</option>
+                        </select>
+                        <p style="color:rgb(77, 1, 103);font-size: medium;">e a Quantidade</p>
+                        <input [(ngModel)]="quantidadegarrafa850" type="number" class="quantidade" min="0"/>
+                      </div>
+                      <div *ngIf="iogurte.id == 4">
+                        <h6 style="color:rgb(77, 1, 103);">Selecione o sabor</h6>
+                        <select style="text-align: center; width: 50%;margin-left: auto;
+                        margin-right: auto;" [(ngModel)]="sache200" class="form-control" id="garrafa400">
+                        <option value="0">Salada de Frutas</option>
+                        <option value="1">Côco</option>
+                        <option value="2">Morango</option>
+                        </select>
+                        <p style="color:rgb(77, 1, 103);font-size: medium;">e a Quantidade</p>
+                        <input [(ngModel)]="quantidadeSache200" type="number" class="quantidade" min="0"/>
+                      </div>
+                      <div *ngIf="iogurte.id == 5">
+                        <h6 style="color:rgb(77, 1, 103);">Selecione o sabor</h6>
+                        <select style="text-align: center; width: 50%;margin-left: auto;
+                        margin-right: auto;" [(ngModel)]="sache1000" class="form-control" id="garrafa400">
+                        <option value="0">Salada de Frutas</option>
+                        <option value="1">Morango</option>
+                        </select>
+                        <p style="color:rgb(77, 1, 103);font-size: medium;">e a Quantidade</p>
+                        <input [(ngModel)]="quantidadeSache1000" type="number" class="quantidade" min="0"/>
+                      </div>
+                      <div *ngIf="iogurte.id == 6">
+                        <h6 style="color:rgb(77, 1, 103);">Selecione o sabor</h6>
+                        <select style="text-align: center; width: 50%;margin-left: auto;
+                        margin-right: auto;" [(ngModel)]="embalagem110" class="form-control" id="garrafa400">
+                        <option value="0">Salada de Frutas</option>
+                        <option value="1">Côco</option>
+                        <option value="2">Frutas Vermelhas</option>
+                        <option value="3">Morango</option>
+                        </select>
+                        <p style="color:rgb(77, 1, 103);font-size: medium;">e a Quantidade</p>
+                        <input [(ngModel)]="quantidadeEmbalagem110" type="number" class="quantidade" min="0"/>
+                      </div>
+                      <div *ngIf="iogurte.id == 7">
+                        <h6 style="color:rgb(77, 1, 103);">Selecione o sabor</h6>
+                        <select style="text-align: center; width: 50%;margin-left: auto;
+                        margin-right: auto;" [(ngModel)]="copo120" class="form-control" id="garrafa400">
+                        <option value="0">Frutas Amarelas</option>
+                        <option value="1">Morango</option>
+                        </select>
+                        <p style="color:rgb(77, 1, 103);font-size: medium;">e a Quantidade</p>
+                        <input [(ngModel)]="quantidadeCopo120" type="number" class="quantidade" min="0"/>
+                      </div>
+                    </div>
+                    <br>
+                    <i class='fa fa-shopping-cart' style="font-size: 110%; color: black; margin-right: 5px;"></i>
+                    <input (click)="preencherIogurteNoCarrinho()" type="button" class="btn btn-success" style="margin-right: 10px;" value="colocar no Carrinho"/>
+                  </div>
+                </slide>
+              </carousel>
+              
+            </div>
           </div>
         </div>
-      </div>
+      </tab>
+      <tab heading="Manteiga" id="tab2">
+        <div class="row">
+          <div class='product--yellow'>
+            <div class='product_inner'>
+              <carousel [interval]="0" >
+                <slide *ngFor="let manteiga of manteigas; let index=index">
+                  <div class="text-center py-5 bg-dark text-white" style="background-color: rgb(239, 231, 241) !important;">
+                    <img [src]="manteiga.img" class="img-responsive center-block" alt="third slide" style="width: 100%;">
+                    <div class="lead">
+                      <i style="font-size: x-small; color: black;">imagem ilustrativa</i>
+                      <h3 [style]="manteiga.color">{{manteiga.nome}}</h3>
+                      <br>
+                      <h4 style="color:rgb(77, 1, 103);">200g por: R${{manteiga.valor200}} e 500g por: R${{manteiga.valor500}} cada unidade</h4>
+                      <h6 style="color:rgb(77, 1, 103);">Selecione a gramagem</h6>
+                        <select style="text-align: center; width: 50%;margin-left: auto;
+                        margin-right: auto;" [(ngModel)]="poteManteiga" class="form-control" id="garrafa400">
+                        <option value="0">200g</option>
+                        <option value="1">500g</option>
+                        </select>
+                      <label style="color:rgb(77, 1, 103);">e a Quantidade</label><br>
+                      <input [(ngModel)]="quantidadepoteManteiga" type="number" class="quantidade" min="0"/></div>
+                      <br>
+                      <i class='fa fa-shopping-cart' style="font-size: 110%; color: black; margin-right: 5px;"></i>
+                      <input (click)="preencherManteigaNoCarrinho()" type="button" class="btn btn-success" style="margin-right: 10px;" value="colocar no Carrinho"/>
+                    </div>
+                  </slide>
+                </carousel>
+                
+              </div>
+            </div>
+          </div>
+        </tab>
+
+        <tab heading="Beb. Láctea" id="tab3">
+          <div class="row">
+            <div class='product--yellow'>
+              <div class='product_inner'>
+                <carousel [interval]="0" >
+                  <slide *ngFor="let bebLactea of bebLacteas; let index=index">
+                    <div class="text-center py-5 bg-dark text-white" style="background-color: rgb(239, 231, 241) !important;">
+                      <img *ngIf="bebLactea.id == 0" [src]="bebLactea.img" class="img-responsive center-block" alt="third slide" style="width: 70%;">
+                      <img *ngIf="bebLactea.id == 1" [src]="bebLactea.img" class="img-responsive center-block" alt="third slide" style="width: 100%;">
+                      <div class="lead">
+                        <i style="font-size: x-small; color: black;">imagem ilustrativa</i>
+                        <h3 [style]="bebLactea.color">{{bebLactea.nome}}</h3>
+                        <br>
+                          <h4 *ngIf="bebLactea.id == 0" style="color:rgb(77, 1, 103);">Sachê de 900g por: R${{bebLactea.valorSache900}} e Garrafa de 850g por: R${{bebLactea.valorGarrafa850}} cada unidade</h4>
+                          <h4 *ngIf="bebLactea.id == 1" style="color:rgb(77, 1, 103);">R${{bebLactea.valor}} cada unidade</h4>
+                          <div *ngIf="bebLactea.id == 0">
+                            <h6 style="color:rgb(77, 1, 103);">Selecione a gramagem</h6>
+                            <select style="text-align: center; width: 50%;margin-left: auto;
+                            margin-right: auto;" [(ngModel)]="bebLacteaGramagem900e850" class="form-control" id="garrafa400">
+                            <option value="0">Garrafa 850g</option>
+                            <option value="1">Sachê 900g</option>
+                            </select>
+                            <h6 style="color:rgb(77, 1, 103);">o sabor</h6>
+                            <select style="text-align: center; width: 50%;margin-left: auto;
+                            margin-right: auto;" [(ngModel)]="bebLactea900e850" class="form-control" id="garrafa400">
+                            <option value="0">Salada de Frutas</option>
+                            <option value="1">Morango</option>
+                            <option value="2">Côco</option>
+                            </select>
+                            <p style="color:rgb(77, 1, 103);font-size: medium;">e a quantidade</p>
+                            <input [(ngModel)]="quantidadeBebLactea900e850" type="number" class="quantidade" min="0"/>
+                          </div>
+                          <div *ngIf="bebLactea.id == 1">
+                            <h6 style="color:rgb(77, 1, 103);">Selecione o sabor</h6>
+                            <select style="text-align: center; width: 50%;margin-left: auto;
+                            margin-right: auto;" [(ngModel)]="bebLactea170" class="form-control" id="garrafa400">
+                            <option value="0">Salada de Frutas</option>
+                            <option value="1">Morango</option>
+                            <option value="2">Côco</option>
+                            </select>
+                            <p style="color:rgb(77, 1, 103);font-size: medium;">e a quantidade</p>
+                            <input [(ngModel)]="quantidadeBebLactea170" type="number" class="quantidade" min="0"/>
+                          </div>
+
+                        </div>
+                        <br>
+                        <i class='fa fa-shopping-cart' style="font-size: 110%; color: black; margin-right: 5px;"></i>
+                        <input (click)="preencherBebLacteaNoCarrinho()" type="button" class="btn btn-success" style="margin-right: 10px;" value="colocar no Carrinho"/>
+                      </div>
+                    </slide>
+                  </carousel>
+                  
+                </div>
+              </div>
+            </div>
+          </tab>
+
+          <tab heading="Leites" id="tab4">
+            <div class="row">
+              <div class='product--yellow'>
+                <div class='product_inner'>
+                  <carousel [interval]="0" >
+                    <slide *ngFor="let leite of leites; let index=index">
+                      <div class="text-center py-5 bg-dark text-white" style="background-color: rgb(239, 231, 241) !important;">
+                        <img [src]="leite.img" class="img-responsive center-block" alt="third slide" style="width: 50%;">
+                        <div class="lead">
+                          <i style="font-size: x-small; color: black;">imagem ilustrativa</i>
+                          <h3 [style]="leite.color">{{leite.nome}}</h3>
+                          <br>
+                          <h4 style="color:rgb(77, 1, 103);">Leite Santa Rosa 1L por: R${{leite.valorSantaRosa}}, Leite Jaguari 1L por: R${{leite.valorJaguari}}, Leite Homegeinizado 1L por: R${{leite.valorHomogenizado1L}} e Leite Homegeinizado 200ml por: R${{leite.valorHomogenizado200ml}} cada unidade</h4>
+                          <h6 style="color:rgb(77, 1, 103);">Selecione as opções abaixo</h6>
+                            <select style="text-align: center; width: 50%;margin-left: auto;
+                            margin-right: auto;" [(ngModel)]="leiteOpcoes" class="form-control" id="garrafa400">
+                            <option value="0">Leite Santa Rosa 1L</option>
+                            <option value="1">Leite Jaguari 1L</option>
+                            <option value="2">Leite Homegeinizado 1L</option>
+                            <option value="3">Leite Homegeinizado 200ml</option>
+                            </select>
+                          <label style="color:rgb(77, 1, 103);">e a Quantidade</label><br>
+                          <input [(ngModel)]="quantidadeleiteOpcoes" type="number" class="quantidade" min="0"/></div>
+                          <br>
+                          <i class='fa fa-shopping-cart' style="font-size: 110%; color: black; margin-right: 5px;"></i>
+                          <input (click)="preencherLeiteNoCarrinho()" type="button" class="btn btn-success" style="margin-right: 10px;" value="colocar no Carrinho"/>
+                        </div>
+                      </slide>
+                    </carousel>
+                  </div>
+                </div>
+              </div>
+            </tab>
+
+            <tab heading="Queijo" id="tab5">
+              <div class="row">
+                <div class='product--yellow'>
+                  <div class='product_inner'>
+                    <carousel [interval]="0" >
+                      <slide *ngFor="let queijo of queijos; let index=index">
+                        <div class="text-center py-5 bg-dark text-white" style="background-color: rgb(239, 231, 241) !important;">
+                          <img [src]="queijo.img" class="img-responsive center-block" alt="third slide" style="width: 100%;">
+                          <div class="lead">
+                            <i style="font-size: x-small; color: black;">imagem ilustrativa</i>
+                            <h3 [style]="queijo.color">{{queijo.nome}}</h3>
+                            <br>
+                            <h4 style="color:rgb(77, 1, 103);">R${{queijo.valor}} cada unidade</h4>
+                            <label style="color:rgb(77, 1, 103);">e a Quantidade</label><br>
+                            <input [(ngModel)]="quantidadeQueijo" type="number" class="quantidade" min="0"/></div>
+                            <br>
+                            <i class='fa fa-shopping-cart' style="font-size: 110%; color: black; margin-right: 5px;"></i>
+                            <input (click)="preencherQueijoNoCarrinho(index)" type="button" class="btn btn-success" style="margin-right: 10px;" value="colocar no Carrinho"/>
+                          </div>
+                        </slide>
+                      </carousel>
+                      
+                    </div>
+                  </div>
+                </div>
+              </tab>
+
+              <tab heading="Emb. Institucional" id="tab6">
+                <div class="row">
+                  <div class='product--yellow'>
+                    <div class='product_inner'>
+                      <carousel [interval]="0" >
+                        <slide *ngFor="let embInst of embInstitucionais; let index=index">
+                          <div class="text-center py-5 bg-dark text-white" style="background-color: rgb(239, 231, 241) !important;">
+                            <img [src]="embInst.img" class="img-responsive center-block" alt="third slide" style="width: 70%;">
+                            <div class="lead">
+                              <i style="font-size: x-small; color: black;">imagem ilustrativa</i>
+                              <h3 [style]="embInst.color">{{embInst.nome}}</h3>
+                              <br>
+                              <h4 style="color:rgb(77, 1, 103);">Iogurte 2,5kg por: R${{embInst.valorIogurte}} e Leite Pateurizado 2,5L por: R${{embInst.valorLeite}} cada unidade</h4>
+                              <h6 style="color:rgb(77, 1, 103);">Selecione as opções abaixo</h6>
+                            <select style="text-align: center; width: 50%;margin-left: auto;
+                            margin-right: auto;" [(ngModel)]="embInstOpcoes" class="form-control" id="garrafa400">
+                            <option value="0">Iogurte Integral 2,5kg</option>
+                            <option value="1">Leite Pateurizado 2,5L</option>
+                            </select>
+                              <label style="color:rgb(77, 1, 103);">e a Quantidade</label><br>
+                              <input [(ngModel)]="quantidadeEmbInstOpcoes" type="number" class="quantidade" min="0"/></div>
+                              <br>
+                              <i class='fa fa-shopping-cart' style="font-size: 110%; color: black; margin-right: 5px;"></i>
+                              <input (click)="preencherEmbInstitucionalNoCarrinho()" type="button" class="btn btn-success" style="margin-right: 10px;" value="colocar no Carrinho"/>
+                            </div>
+                          </slide>
+                        </carousel>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </tab>
+      </tabset>
       
       <div class="row">
         <div class='product--yellow'>
@@ -43,100 +317,98 @@
                 <div class="row" style="display: inline-block;
                 overflow-y: scroll;
                 max-height:200px;">
-                  <table style="text-align: center;
-                  margin: auto;" class="table table-bordered text-center">
-                    <thead class="thead-light">
-                      <tr class="text-center" >
-                        <th colspan="9" class="dateHeader" style="background-color:#e95420; color:white;font-size:larger;">Lista de Pedidos</th>
-                      </tr>
-                      <tr>
-                        <th>Item</th>
-                        <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                        <th>Total</th>
-                        <th colspan="2">Retirar</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let mercadoria of mercadorias; let index=index">
-                        <td>{{index}}</td>
-                        <td>{{mercadoria.nome}}</td>
-                        <td>R${{mercadoria.preco}}</td>
-                        <td>{{mercadoria.quantidade}}</td>
-                        <td>R${{mercadoria.totalProduto}}</td>
-                        <td>
-                          <a style="text-decoration:none;" class="retirarProduto item" (click)="retirarDoCarrinho(mercadoria)">
-                            <i class='fa fa-times-circle' style="font-size: 110%; color: black; margin-right: 5px;"></i>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                    <tfoot *ngIf="!mercadorias">
-                      <tr>
-                        <td colspan="7" class="text-center">
-                          <h4>
-                            Nenhuma Mercadoria encontrada!
-                          </h4>
-                        </td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                  
-                </div>
-                <i style="font-size: small;">Total de Itens: {{totalItens}}
-                </i>
-              </div>
-            </div>
-            <br>
-            <h4 style="color:rgb(6, 61, 58);">Total</h4>
-            <h5 style="color:rgb(6, 61, 58);"><i>Calcule o Preço e peça
-              via Whatsapp <i class="fa fa-whatsapp" ></i></i></h5>
-              <div class="col-md-3">
-                <button (click)="calcular()" style="background-color:rgb(6, 61, 58); width: 130px; border-radius: 50px;">Calcular</button>
-                <label>Total: R$ {{resultado}}</label>     
-              </div>
+                <table id="conteudoPdf" style="text-align: center;
+                margin: auto;" class="table table-bordered text-center">
+                <thead class="thead-light">
+                  <tr class="text-center" >
+                    <th colspan="9" class="dateHeader" style="background-color:#e95420; color:white;font-size:larger;">Carrinho de Pedidos</th>
+                  </tr>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                    <th colspan="2">Retirar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let mercadoria of mercadorias; let index=index">
+                    <td>{{mercadoria.nome}}</td>
+                    <td>R${{mercadoria.preco}}</td>
+                    <td>{{mercadoria.quantidade}}</td>
+                    <td>R${{mercadoria.totalProduto}}</td>
+                    <td>
+                      <a style="text-decoration:none;" class="retirarProduto item" (click)="retirarDoCarrinho(mercadoria)">
+                        <i class='fa fa-times-circle' style="font-size: 110%; color: black; margin-right: 5px;"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot *ngIf="!mercadorias">
+                  <tr>
+                    <td colspan="7" class="text-center">
+                      <h4>
+                        Nenhuma Mercadoria encontrada!
+                      </h4>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
               
-              <br>
-              <a style="text-decoration:none;" class="whatsapp-link" (click)="openModal(template)">
-                <i class="fa fa-whatsapp" ></i> Solicitar 
-              </a>
             </div>
+            <i style="font-size: small;">Total de Itens: {{totalItens}}
+            </i>
           </div>
         </div>
-      </div>
-    </section>
-    
-    <ng-template #template>
-      <div class="container" style="padding: 10px;">
-        <div class="modal-header">
-          <h4 style="color:rgb(21, 95, 91);" class="modal-title pull-left">Confirme Seu Endereço abaixo e preencha sua loja corretamente</h4>
-          <button type="button" class="close pull-right" 
-          aria-label="Close" (click)="modalRef.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-12">
-          <label style="color:rgb(21, 95, 91);"><i>Endereço:</i> </label>
-          <input type="text" [(ngModel)]="endereco" style="width: 100%;">
+        <br>
+        <h4 style="color:rgb(6, 61, 58);">Total</h4>
+        <h5 style="color:rgb(6, 61, 58);"><i>Calcule o Preço e peça
+          via Whatsapp <i class="fa fa-whatsapp" ></i></i></h5>
+          <div class="col-md-3">
+            <button (click)="calcular()" style="background-color:rgb(6, 61, 58); width: 130px; border-radius: 50px;">Calcular</button>
+            <label>Total: R$ {{resultado}}</label>     
+          </div>
+          
+          <br>
+          <a style="text-decoration:none;" class="whatsapp-link" (click)="openModal(template)">
+            <i class="fa fa-whatsapp" ></i> Solicitar 
+          </a>
         </div>
       </div>
-      <br>
-      <div class="form-row">
-        <div class="form-group col-md-12">
-          <label style="color:rgb(21, 95, 91);"><i>Loja(mercado):</i> </label>
-          <input type="text" [(ngModel)]="loja" style="width: 100%;">
-        </div>
-      </div>
-    </div>
-    <div class="container" style="padding: 10px;">
-      <div class="modal-footer btn-group d-flex">
-        Confirmar <i style="margin-left: 5px;margin-right: 10px;" class="fa fa-arrow-right" aria-hidden="true"></i>
-        <a style="text-decoration:none; border-radius: 100%;width: 50px;
-        height: 3%;" class="whatsapp-link" (click)="solicitar()">
-        <i class="fa fa-whatsapp" ></i> 
-      </a>
     </div>
   </div>
+</section>
+
+<ng-template #template>
+  <div class="container" style="padding: 10px;">
+    <div class="modal-header">
+      <h4 style="color:rgb(21, 95, 91);" class="modal-title pull-left">Confirme Seu Endereço abaixo e preencha sua loja corretamente</h4>
+      <button type="button" class="close pull-right" 
+      aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label style="color:rgb(21, 95, 91);"><i>Endereço:</i> </label>
+      <input type="text" [(ngModel)]="endereco" style="width: 100%;">
+    </div>
+  </div>
+  <br>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label style="color:rgb(21, 95, 91);"><i>Loja(mercado):</i> </label>
+      <input type="text" [(ngModel)]="loja" style="width: 100%;">
+    </div>
+  </div>
+</div>
+<div class="container" style="padding: 10px;">
+  <div class="modal-footer btn-group d-flex">
+    Confirmar <i style="margin-left: 5px;margin-right: 10px;" class="fa fa-arrow-right" aria-hidden="true"></i>
+    <a style="text-decoration:none; border-radius: 100%;width: 50px;
+    height: 3%;" class="whatsapp-link" (click)="solicitar()">
+    <i class="fa fa-whatsapp" ></i> 
+  </a>
+</div>
+</div>
 </ng-template>
