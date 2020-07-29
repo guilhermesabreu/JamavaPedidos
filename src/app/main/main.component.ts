@@ -588,8 +588,15 @@ export class MainComponent implements OnInit {
 
       pdf.add( await new Img('../../assets/img/nomeJamava.png').build() );
       pdf.add(msg);
+      pdf.create().open();
       pdf.create().download("JamavaPedidos.pdf");
 
+    }
+
+    envioWhatsApp(msg: string, number: number){
+      let target = `https://api.whatsapp.com/send?phone=${encodeURIComponent(number)}&text=${encodeURIComponent(msg)}`;
+          
+      window.open(target,"_blank");
     }
     
     solicitar(){
@@ -618,10 +625,7 @@ export class MainComponent implements OnInit {
           msg = `Olá Wagner !!! Solicito o seguinte pedido: ${mensagemItems} \r\n *Total do carrinho = R$${this.resultado}* \r\n *Meu Endereço é o seguinte: ${this.endereco}* \r\n loja: ${this.loja}`;
           
           this.gerarPDF(msg);
-
-          let target = `https://api.whatsapp.com/send?phone=${encodeURIComponent(number)}&text=${encodeURIComponent(msg)}`;
-          
-          window.open(target,"_blank");
+          this.envioWhatsApp(msg, number);
         }  
       }else{
         this.toastr.info("Informe o Endereço que desejas receber o pedido");
