@@ -588,9 +588,7 @@ export class MainComponent implements OnInit {
 
       pdf.add( await new Img('../../assets/img/nomeJamava.png').build() );
       pdf.add(msg);
-      pdf.create().open();
       pdf.create().download("JamavaPedidos.pdf");
-
     }
 
     envioWhatsApp(msg: string, number: number){
@@ -613,6 +611,8 @@ export class MainComponent implements OnInit {
           
           //Número do cliente comprador do site
           let number = 5513991425519;
+          let endereco = this.endereco != null ? `*Meu Endereço é o seguinte: ${this.endereco}*` : '';
+          let loja = this.loja != null ? `*loja: ${this.loja}*` : ''; 
           let mensagemItems = '';
           let msg;
           let file = ''
@@ -622,7 +622,7 @@ export class MainComponent implements OnInit {
             mensagemItems = mensagemItems+"\r\n" + quantidadesProdutos[i]+" "+ nomesProdutos[i]+" no valor unitário de = R$"+valoresProdutos[i]+" por = R$"+ totalFormatado[i];
           }
           
-          msg = `Olá Wagner !!! Solicito o seguinte pedido: ${mensagemItems} \r\n *Total do carrinho = R$${this.resultado}* \r\n *Meu Endereço é o seguinte: ${this.endereco}* \r\n loja: ${this.loja}`;
+          msg = `Olá Wagner !!! Solicito o seguinte pedido: ${mensagemItems} \r\n *Total do carrinho = R$${this.resultado}* \r\n ${endereco}  \r\n ${loja}`;
           
           this.gerarPDF(msg);
           this.envioWhatsApp(msg, number);
