@@ -618,6 +618,7 @@ export class MainComponent implements OnInit {
           let file = ''
           
           
+          
           for (let i = 0; i < this.mercadorias.length; i++) {
             mensagemItems = mensagemItems+"\r\n" + quantidadesProdutos[i]+" "+ nomesProdutos[i]+" no valor unitário de = R$"+valoresProdutos[i]+" por = R$"+ totalFormatado[i];
           }
