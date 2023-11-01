@@ -6,7 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Mercadoria } from 'src/app/_model/Mercadoria';
 import { Validators } from '@angular/forms';
 import { PdfMakeWrapper, Img } from 'pdfmake-wrapper';
-import pdfFonts from "pdfmake/build/vfs_fonts";
+import * as pdfFonts  from "pdfmake/build/vfs_fonts";
 PdfMakeWrapper.setFonts(pdfFonts);
 
 @Component({
@@ -17,47 +17,47 @@ PdfMakeWrapper.setFonts(pdfFonts);
 export class MainComponent implements OnInit {
 
   mercadorias: Mercadoria[] = [];
-  mercadoria: Mercadoria;
+  mercadoria!: Mercadoria;
   resultado = '';
-  endereco: string;
-  loja: string;
+  endereco!: string;
+  loja!: string;
   noWrapSlides = false;
-  totalItens: string;
-  modalRef: BsModalRef;
+  totalItens!: string;
+  modalRef!: BsModalRef;
   
   ////Iogurte/////
   garrafa400: any;
-  quantidadegarrafa400: number;
-  quantidadeCopo170: number;
+  quantidadegarrafa400!: number;
+  quantidadeCopo170!: number;
   garrafa170: any;
-  quantidadegarrafa170: number;
+  quantidadegarrafa170!: number;
   garrafa850: any;
-  quantidadegarrafa850: number;
+  quantidadegarrafa850!: number;
   sache200: any;
-  quantidadeSache200: number;
+  quantidadeSache200!: number;
   sache1000: any;
-  quantidadeSache1000: number;
+  quantidadeSache1000!: number;
   embalagem110: any;
-  quantidadeEmbalagem110: number;
+  quantidadeEmbalagem110!: number;
   copo120: any;
-  quantidadeCopo120: number;
+  quantidadeCopo120!: number;
   ////Manteiga/////
   poteManteiga: any;
-  quantidadepoteManteiga: number;
+  quantidadepoteManteiga!: number;
   ////BebLactea////
   bebLacteaGramagem900e850: any;
   bebLactea900e850: any;
-  quantidadeBebLactea900e850: number;
+  quantidadeBebLactea900e850!: number;
   bebLactea170: any;
-  quantidadeBebLactea170: number;
+  quantidadeBebLactea170!: number;
   /////Leites//////
   leiteOpcoes: any;
-  quantidadeleiteOpcoes: number;
+  quantidadeleiteOpcoes!: number;
   /////Queijos/////
-  quantidadeQueijo: number;
+  quantidadeQueijo!: number;
   /////Emb. Institucional////
   embInstOpcoes: any;
-  quantidadeEmbInstOpcoes: number;
+  quantidadeEmbInstOpcoes!: number;
   
   // iogurtes
   iogurteGarrafa400 = {nome: '', valor: '', quantidade: 0, total: 0 }; 
@@ -163,7 +163,7 @@ export class MainComponent implements OnInit {
         }
       }
       this.embInstOpcoes = null;
-      this.quantidadeEmbInstOpcoes = null;
+      this.quantidadeEmbInstOpcoes = null as any;
       this.embalagemInstitucional.nome = '';   
       this.totalItens = this.mercadorias.length.toString();  
 
@@ -201,7 +201,7 @@ export class MainComponent implements OnInit {
           }
         }
       }
-      this.quantidadeQueijo = null;
+      this.quantidadeQueijo = null as any;
       
       this.queijoFrescal.nome = '';   
       this.queijoPadrao.nome = '';
@@ -248,7 +248,7 @@ export class MainComponent implements OnInit {
         
       }
       this.leiteOpcoes = null;
-      this.quantidadeleiteOpcoes = null;
+      this.quantidadeleiteOpcoes = null as any;
       
       this.leite.nome = '';   
       this.totalItens = this.mercadorias.length.toString();
@@ -268,17 +268,17 @@ export class MainComponent implements OnInit {
         console.log("gramagem ",gramagem);
         console.log("sabor ",sabor);
         if(gramagem.toString() == '0' && sabor.toString() == '0'){
-          this.bebidaLactea900e850 = {nome: sabores.saladaDeFrutas +' '+ gramagens900e850.bebLactea850 , quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorGarrafa850, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorGarrafa850.replace(',','.'))};
+          this.bebidaLactea900e850 = {nome: sabores.saladaDeFrutas +' '+ gramagens900e850.bebLactea850 , quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorGarrafa850!, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorGarrafa850!.replace(',','.'))};
         }else if(gramagem.toString() == '0' && sabor.toString() == '1'){
-          this.bebidaLactea900e850 = {nome: sabores.morango +' '+ gramagens900e850.bebLactea850, quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorGarrafa850, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorGarrafa850.replace(',','.'))};
+          this.bebidaLactea900e850 = {nome: sabores.morango +' '+ gramagens900e850.bebLactea850, quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorGarrafa850!, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorGarrafa850!.replace(',','.'))};
         }else if(gramagem.toString() == '0' && sabor.toString() == '2'){
-          this.bebidaLactea900e850 = {nome: sabores.coco +' '+ gramagens900e850.bebLactea850, quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorGarrafa850, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorGarrafa850.replace(',','.'))};
+          this.bebidaLactea900e850 = {nome: sabores.coco +' '+ gramagens900e850.bebLactea850, quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorGarrafa850!, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorGarrafa850!.replace(',','.'))};
         }else if(gramagem.toString() == '1' && sabor.toString() == '0'){
-          this.bebidaLactea900e850 = {nome: sabores.saladaDeFrutas +' '+ gramagens900e850.bebLactea900 , quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorSache900, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorSache900.replace(',','.'))};
+          this.bebidaLactea900e850 = {nome: sabores.saladaDeFrutas +' '+ gramagens900e850.bebLactea900 , quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorSache900!, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorSache900!.replace(',','.'))};
         }else if(gramagem.toString() == '1' && sabor.toString() == '1'){
-          this.bebidaLactea900e850 = {nome: sabores.morango +' '+ gramagens900e850.bebLactea900, quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorSache900, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorSache900.replace(',','.'))};
+          this.bebidaLactea900e850 = {nome: sabores.morango +' '+ gramagens900e850.bebLactea900, quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorSache900!, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorSache900!.replace(',','.'))};
         }else if(gramagem.toString() == '1' && sabor.toString() == '2'){
-          this.bebidaLactea900e850 = {nome: sabores.coco +' '+ gramagens900e850.bebLactea900, quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorSache900, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorSache900.replace(',','.'))};
+          this.bebidaLactea900e850 = {nome: sabores.coco +' '+ gramagens900e850.bebLactea900, quantidade: this.quantidadeBebLactea900e850, valor: this.bebLacteas[0].valorSache900!, total: this.quantidadeBebLactea900e850 * parseFloat(this.bebLacteas[0].valorSache900!.replace(',','.'))};
         }
         
       }
@@ -287,11 +287,11 @@ export class MainComponent implements OnInit {
         let sabores = {saladaDeFrutas: 'Bebida Láctea sabor Salada de Frutas garrafa 170g', morango: 'Bebida Láctea sabor Morango garrafa 170g',  coco: 'Bebida Láctea sabor Côco garrafa 170g' };
         
         switch(this.bebLactea170.toString()){
-          case '0': this.bebidaLacteaGarrafa170 = {nome: sabores.saladaDeFrutas, quantidade: this.quantidadeBebLactea170, valor: this.bebLacteas[1].valor, total: this.quantidadeBebLactea170 * parseFloat(this.bebLacteas[1].valor.replace(',','.'))}; break;
+          case '0': this.bebidaLacteaGarrafa170 = {nome: sabores.saladaDeFrutas, quantidade: this.quantidadeBebLactea170, valor: this.bebLacteas[1].valor!, total: this.quantidadeBebLactea170 * parseFloat(this.bebLacteas[1].valor!.replace(',','.'))}; break;
           
-          case '1': this.bebidaLacteaGarrafa170 = {nome: sabores.morango, quantidade: this.quantidadeBebLactea170, valor: this.bebLacteas[1].valor, total: this.quantidadeBebLactea170 * parseFloat(this.bebLacteas[1].valor.replace(',','.'))}; break;
+          case '1': this.bebidaLacteaGarrafa170 = {nome: sabores.morango, quantidade: this.quantidadeBebLactea170, valor: this.bebLacteas[1].valor!, total: this.quantidadeBebLactea170 * parseFloat(this.bebLacteas[1].valor!.replace(',','.'))}; break;
           
-          case '2': this.bebidaLacteaGarrafa170 = {nome: sabores.coco, quantidade: this.quantidadeBebLactea170, valor: this.bebLacteas[1].valor, total: this.quantidadeBebLactea170 * parseFloat(this.bebLacteas[1].valor.replace(',','.'))}; break;
+          case '2': this.bebidaLacteaGarrafa170 = {nome: sabores.coco, quantidade: this.quantidadeBebLactea170, valor: this.bebLacteas[1].valor!, total: this.quantidadeBebLactea170 * parseFloat(this.bebLacteas[1].valor!.replace(',','.'))}; break;
           
         }
         
@@ -316,9 +316,9 @@ export class MainComponent implements OnInit {
       }
       
       this.bebLacteaGramagem900e850 = null;
-      this.quantidadeBebLactea900e850 = null;
+      this.quantidadeBebLactea900e850 = null as any;
       this.bebLactea900e850 = null;
-      this.quantidadeBebLactea170 = null;
+      this.quantidadeBebLactea170 = null as any;
       this.bebLactea170 = null;
       
       this.bebidaLacteaGarrafa170.nome = '';
@@ -360,7 +360,7 @@ export class MainComponent implements OnInit {
       }
       
       this.poteManteiga = null;
-      this.quantidadepoteManteiga = null;
+      this.quantidadepoteManteiga = null as any;
       
       this.manteiga.nome = '';   
       this.totalItens = this.mercadorias.length.toString();
@@ -517,20 +517,20 @@ export class MainComponent implements OnInit {
       
       
       this.garrafa400 = null;
-      this.quantidadegarrafa400 = null;
-      this.quantidadeCopo170 = null;
+      this.quantidadegarrafa400 = null as any;
+      this.quantidadeCopo170 = null as any;
       this.garrafa170 = null;
-      this.quantidadegarrafa170 = null;
+      this.quantidadegarrafa170 = null as any;
       this.garrafa850 = null;
-      this.quantidadegarrafa850 = null;
+      this.quantidadegarrafa850 = null as any;
       this.sache200 = null;
-      this.quantidadeSache200 = null;
-      this.quantidadeSache1000 = null;
+      this.quantidadeSache200 = null as any;
+      this.quantidadeSache1000 = null as any;
       this.sache1000 = null;
       this.embalagem110 = null;
-      this.quantidadeEmbalagem110 = null;
+      this.quantidadeEmbalagem110 = null as any;
       this.copo120 = null;
-      this.quantidadeCopo120 = null;
+      this.quantidadeCopo120 = null as any;
       
       this.iogurteGarrafa400.nome = '';
       this.iogurteCopo170.nome = '';
@@ -636,7 +636,7 @@ export class MainComponent implements OnInit {
     
     obterLocalizacao(){
       let endereco;
-      const successfulLookup = (position) => {
+      const successfulLookup = (position:any) => {
         const {latitude, longitude} = position.coords;
         
         fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=5847b29338a343f29fde5093488c762e`)
